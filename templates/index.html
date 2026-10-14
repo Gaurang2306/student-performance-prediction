@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <main class="container">
+        <header class="header">
+            <div class="icon">🎓</div>
+            <h1>Student Performance Predictor</h1>
+            <p>Predict a student's mathematics score using their academic details.</p>
+        </header>
+
+        <form id="predictionForm">
+
+            <section class="section">
+                <h2>Academic Scores</h2>
+                <p class="section-description">Enter scores between 0 and 100.</p>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="reading_score">Reading Score</label>
+                        <input
+                            type="number"
+                            id="reading_score"
+                            name="reading_score"
+                            min="0"
+                            max="100"
+                            step="1"
+                            placeholder="0–100"
+                            required
+                        >
+                        <small>Minimum: 0 | Maximum: 100</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="writing_score">Writing Score</label>
+                        <input
+                            type="number"
+                            id="writing_score"
+                            name="writing_score"
+                            min="0"
+                            max="100"
+                            step="1"
+                            placeholder="0–100"
+                            required
+                        >
+                        <small>Minimum: 0 | Maximum: 100</small>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Student Details</h2>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="" disabled selected>Select gender</option>
+                            <option value="female">Female</option>
+                            <option value="male">Male</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="race_ethnicity">Race / Ethnicity Group</label>
+                        <select id="race_ethnicity" name="race_ethnicity" required>
+                            <option value="" disabled selected>Select group</option>
+                            <option value="group A">Group A</option>
+                            <option value="group B">Group B</option>
+                            <option value="group C">Group C</option>
+                            <option value="group D">Group D</option>
+                            <option value="group E">Group E</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="parental_education">Parental Level of Education</label>
+                        <select id="parental_education" name="parental_education" required>
+                            <option value="" disabled selected>Select education level</option>
+                            <option value="some high school">Some High School</option>
+                            <option value="high school">High School</option>
+                            <option value="some college">Some College</option>
+                            <option value="associate's degree">Associate's Degree</option>
+                            <option value="bachelor's degree">Bachelor's Degree</option>
+                            <option value="master's degree">Master's Degree</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lunch">Lunch Type</label>
+                        <select id="lunch" name="lunch" required>
+                            <option value="" disabled selected>Select lunch type</option>
+                            <option value="standard">Standard</option>
+                            <option value="free/reduced">Free / Reduced</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="test_preparation">Test Preparation Course</label>
+                        <select id="test_preparation" name="test_preparation" required>
+                            <option value="" disabled selected>Select status</option>
+                            <option value="none">None</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <button type="submit" id="predictButton">
+                Predict Mathematics Score
+            </button>
+
+            <p id="errorMessage" class="error-message" role="alert"></p>
+        </form>
+
+        <section id="resultSection" class="result-section" hidden>
+            <h2>Prediction Result</h2>
+            <p class="result-label">Predicted Mathematics Score</p>
+
+            <div class="score-display">
+                <span id="predictedScore">0</span>
+                <span class="out-of">/ 100</span>
+            </div>
+
+            <div class="progress-track">
+                <div id="scoreProgress" class="progress-fill"></div>
+            </div>
+
+            <p class="result-note">
+                This is an estimated score generated by the machine learning model.
+            </p>
+        </section>
+
+        <footer>
+            Student Performance Prediction · Machine Learning Project
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
